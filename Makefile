@@ -1,6 +1,9 @@
 main: a.out
 	./a.out
 
-a.out: main.asm
+source.o:
+	gcc -c source.c
+
+a.out: main.asm source.o
 	nasm -f macho64 -o a.out main.asm
-	cc a.out
+	cc a.out source.o
