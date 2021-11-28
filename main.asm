@@ -11,14 +11,15 @@
 
             section     .text
 _main:      push        rbx                     ; Call stack must be aligned
-            mov         rdi, 4
+            mov         rdi, 10
             call        _fibo
             lea         rdi, [rel message]      ; First argument is address of message
             mov         rsi, rax
             call        _printf                 ; puts(message)
             pop         rbx                     ; Fix up stack before returning
             mov         rax, 0                  ; Return value is 0
+
             ret
 
             section     .data
-message:    db          "fibo 4 = %ld", `\n`, 0        ; C strings need a zero byte at the end
+message:    db          "fibo 10 = %ld", `\n`, 0        ; C strings need a zero byte at the end
