@@ -1,5 +1,5 @@
-test: main
-	./main
+test: main.out
+	./main.out
 
 all: fibo.out main.out integerMulDiv.out
 
@@ -18,6 +18,11 @@ integerMulDiv.out: integerMulDiv_.asm integerMulDiv.c
 	nasm -f macho64 -o integerMulDiv_.o integerMulDiv_.asm
 	gcc -c integerMulDiv.c
 	cc -o integerMulDiv.out integerMulDiv.o integerMulDiv_.o
+
+memoryAddress.out: memoryAddress_.asm memoryAddress.c
+	nasm -f macho64 -o memoryAddress_.o memoryAddress_.asm
+	gcc -c memoryAddress.c
+	cc -o memoryAddress.out memoryAddress.o memoryAddress_.o
 
 .PHONY clean: 
 	- rm *.o *.out
