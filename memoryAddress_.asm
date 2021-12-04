@@ -5,7 +5,7 @@
 ;   fibonacci (n)
 ; ------------------------------------------------------------
 
-    global      _memoryAddress
+    global  _memoryAddress
 
     section .text
 _memoryAddress:

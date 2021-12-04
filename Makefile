@@ -1,7 +1,7 @@
 test: main.out
 	./main.out
 
-all: fibo.out main.out integerMulDiv.out
+all: fibo.out main.out integerMulDiv.out signedMax.out
 
 source.o: source.c
 	gcc -c source.c
@@ -23,6 +23,11 @@ memoryAddress.out: memoryAddress_.asm memoryAddress.c
 	nasm -f macho64 -o memoryAddress_.o memoryAddress_.asm
 	gcc -c memoryAddress.c
 	cc -o memoryAddress.out memoryAddress.o memoryAddress_.o
+
+signedMax.out: signedMax_.asm signedMax.c
+	nasm -f macho64 -o signedMax_.o signedMax_.asm
+	gcc -c signedMax.c
+	cc -o signedMax.out signedMax.o signedMax_.o
 
 .PHONY clean: 
 	- rm *.o *.out
