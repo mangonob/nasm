@@ -29,5 +29,15 @@ signedMax.out: signedMax_.asm signedMax.c
 	gcc -c signedMax.c
 	cc -o signedMax.out signedMax.o signedMax_.o
 
+arraySum.out: arraySum_.asm arraySum.c
+	nasm -f macho64 -o arraySum_.o arraySum_.asm
+	gcc -c arraySum.c
+	cc -o arraySum.out arraySum.o arraySum_.o
+
+matrixSum.out: matrixSum_.asm matrixSum.c
+	nasm -f macho64 -o matrixSum_.o matrixSum_.asm
+	gcc -c matrixSum.c
+	cc -o matrixSum.out matrixSum.o matrixSum_.o
+
 .PHONY clean: 
 	- rm *.o *.out
