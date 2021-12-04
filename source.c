@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 int fibo(int n)
 {
     if (n <= 0)
@@ -6,14 +8,16 @@ int fibo(int n)
         return fibo(n - 1) + fibo(n - 2);
 }
 
-int i(int a, int b, int *prod, int *quo, int *rem)
+void i()
 {
-    if (b == 0)
-        return 0;
+    int a[40][20];
 
-    *prod = a * b;
-    *quo = a / b;
-    *rem = a % b;
-
-    return 1;
+    for (int i = 1; i < 3; ++i)
+    {
+        puts("");
+        for (int j = 2; j < 7; ++j)
+        {
+            printf("%d", a[i][j]);
+        }
+    }
 }

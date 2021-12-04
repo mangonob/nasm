@@ -14,10 +14,25 @@ int main(int argc, char *argv[])
         {10, 11, 12},
     };
 
-    int colSums[M] = {0};
-    int rowSums[N] = {0};
+    int colSums[N] = {0};
+    int rowSums[M] = {0};
 
     matrixSum(a[0], M, N, rowSums, colSums);
+
+    for (int i = 0; i < M; i++)
+    {
+        for (int j = 0; j < N; j++)
+        {
+            printf("%4d, ", a[i][j]);
+        }
+        printf("%4d \n", rowSums[i]);
+    }
+
+    for (int j = 0; j < N; j++)
+    {
+        printf("%4d, ", colSums[j]);
+    }
+    printf("\n");
 
     return 0;
 }

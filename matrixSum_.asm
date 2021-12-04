@@ -8,44 +8,75 @@
 
     global  _matrixSum
 
-    %define a_          rdi
-    %define row_        esi
-    %define col_        edx
-    %define rowSum_     rcx
-    %define colSum_     r8
+    %define var_i       -4
+    %define var_j       -8
 
     section .text
 _matrixSum:
     push    rbp
     mov     rbp, rsp
+    push    rbx
 
     xor     eax, eax
-    cmp     row_, 0
+    cmp     esi, 0
     jle     end
-    cmp     col_, 0
+    cmp     edx, 0
     jle     end
 
-; ---------------- Calculate sum of rows begin ----------------
-    xor     r10, r10
-    mov     ebx, row_
-calRow:
+    mov     dword [rbp+var_i], 0
+cal_rows:
+    cmp     [rbp+var_i], esi        ; i < row
+    jge     cal_rows_end
+
     xor     eax, eax
-    push    rbx 
-    mov     ebx, col_
+    mov     dword [rbp+var_j], 0
 .loop:
-    add     eax, [a_+r10*4]
-    add     r10d, col_
-    dec     ebx 
-    jnz     .loop
+    cmp     [rbp+var_j], edx        ; j < col
+    jge     .loop_end
 
-    pop     rbx
+    mov     ebx, [rbp+var_i]
+    imul    ebx, edx
+    add     ebx, [rbp+var_j]
+    add     eax, [rdi+rbx*4]
 
-    mov     [rowSum_+rbx], eax
-    dec     ebx
-    jnz     calRow
-; ---------------- Calculate sum of rows end ----------------
+    inc     dword [rbp+var_j]
+    jmp     .loop
+.loop_end: 
+    mov     ebx, [rbp+var_i]
+    mov     [rcx+rbx*4], eax
+
+    inc     dword [rbp+var_i]
+    jmp     cal_rows
+cal_rows_end:
+
+    mov     dword [rbp+var_i], 0
+cal_cols:
+    cmp     [rbp+var_i], edx        ; i < col
+    jge     cal_cols_end
+
+    xor     eax, eax
+    mov     dword [rbp+var_j], 0
+.loop:
+    cmp     [rbp+var_j], esi        ; j < row
+    jge     .loop_end
+
+    mov     ebx, [rbp+var_j]
+    imul    ebx, edx
+    add     ebx, [rbp+var_i]
+    add     eax, [rdi+rbx*4]
+
+    inc     dword [rbp+var_j]
+    jmp     .loop
+.loop_end: 
+    mov     ebx, [rbp+var_i]
+    mov     [r8+rbx*4], eax
+
+    inc     dword [rbp+var_i]
+    jmp     cal_cols
+cal_cols_end:
 
     mov     eax, 1
 end:
+    pop     rbx
     pop     rbp
     ret
