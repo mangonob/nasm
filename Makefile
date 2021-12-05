@@ -39,5 +39,10 @@ matrixSum.out: matrixSum_.asm matrixSum.c
 	gcc -c matrixSum.c
 	cc -o matrixSum.out matrixSum.o matrixSum_.o
 
+structSum.out: structSum_.asm structSum.c
+	nasm -f macho64 -o structSum_.o structSum_.asm
+	gcc -c structSum.c
+	cc -o structSum.out structSum.o structSum_.o
+
 .PHONY clean: 
 	- rm *.o *.out
