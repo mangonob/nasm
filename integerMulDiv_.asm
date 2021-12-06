@@ -11,30 +11,31 @@
 ;   1 Success
 ; --------------------------------------------------------------------------------
 
-        global      _integerMulDiv
+    global  _integerMulDiv
 
-        section     .text
+    section .text
 _integerMulDiv:  
-        push        rbp
-        push        rsp
-        mov         rbp, rsp
+    push    rbp
+    push    rsp
+    mov     rbp, rsp
 
-        xor         eax, eax                ; Clear eax
-        or          esi, esi                
-        jz          End_                    ; Error
+    xor     eax, eax           ; Clear eax
+    or      esi, esi                
+    jz      End_               ; Error
 
-        push        rdi
-        imul        edi, esi
-        mov         [rdx], edi             ; Save product
-        pop         rdi
+    push    rdi
+    imul    edi, esi
+    mov     [rdx], edi         ; Save product
+    pop     rdi
 
-        mov         eax, edi
-        cdq
-        idiv        esi
-        mov         [rcx], eax
-        mov         [r8], edx
+    mov     eax, edi
+    cdq
+    idiv    esi
+    mov     [rcx], eax
+    mov     [r8], edx
 
-        mov         eax, 1
-End_:   pop         rsp
-        pop         rbp
-        ret
+    mov     eax, 1
+End_:   
+    pop     rsp
+    pop     rbp
+    ret
