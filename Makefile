@@ -44,7 +44,7 @@ structSum.out: Value.asm Value.h structSum_.asm structSum.c
 	gcc -c structSum.c
 	cc -o structSum.out structSum.o structSum_.o
 
-newStruct.out: newStruct_.asm newStruct.c
+newStruct.out: Value.asm Value.h newStruct_.asm newStruct.c
 	nasm -f macho64 -o newStruct_.o newStruct_.asm
 	gcc -c newStruct.c
 	cc -o newStruct.out newStruct.o newStruct_.o

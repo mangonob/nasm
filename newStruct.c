@@ -7,7 +7,8 @@ extern void deallocValue(Value *ptr);
 
 int main(int argc, char *argv[])
 {
-    Value *val = newValue(-4, 2, 4, 43);
+    Value *val = newValue(100, -43, INT32_MIN, INT64_MAX);
+    printf("%d %d %d %ld\n", (int)val->val8, (int)val->val16, (int)val->val32, (long)val->val64);
     deallocValue(val);
     return 0;
 }
