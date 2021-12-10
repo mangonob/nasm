@@ -49,5 +49,15 @@ newStruct.out: Value.asm Value.h newStruct_.asm newStruct.c
 	gcc -c newStruct.c
 	cc -o newStruct.out newStruct.o newStruct_.o
 
+countChars.out: countChars_.asm countChars.c
+	nasm -f macho64 -o countChars_.o countChars_.asm
+	gcc -c countChars.c
+	cc -o countChars.out countChars.o countChars_.o
+
+concatStrings.out: concatStrings_.asm concatStrings.c
+	nasm -f macho64 -o concatStrings_.o concatStrings_.asm
+	gcc -c concatStrings.c
+	cc -o concatStrings.out concatStrings.o concatStrings_.o
+
 .PHONY clean: 
 	- rm *.o *.out
