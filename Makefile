@@ -10,6 +10,9 @@ fibo.out: fibo.asm source.o
 	nasm -f macho64 -o fibo.o fibo.asm
 	cc -o fibo.out fibo.o source.o
 
+example.out: example.c
+	cc -o example.out example.c
+
 main.out: main.asm source.o
 	nasm -f macho64 -o main.o main.asm
 	cc -o main.out main.o
@@ -63,6 +66,11 @@ arrayCmp.out: arrayCmp_.asm arrayCmp.c
 	nasm -f macho64 -o arrayCmp_.o arrayCmp_.asm
 	gcc -c arrayCmp.c
 	cc -o arrayCmp.out arrayCmp.o arrayCmp_.o
+
+temperatureConvert.out: temperatureConvert_.asm temperatureConvert.c
+	nasm -f macho64 -o temperatureConvert_.o temperatureConvert_.asm
+	gcc -c temperatureConvert.c
+	cc -o temperatureConvert.out temperatureConvert.o temperatureConvert_.o
 
 .PHONY clean: 
 	- rm *.o *.out
