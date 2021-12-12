@@ -59,5 +59,10 @@ concatStrings.out: concatStrings_.asm concatStrings.c
 	gcc -c concatStrings.c
 	cc -o concatStrings.out concatStrings.o concatStrings_.o
 
+arrayCmp.out: arrayCmp_.asm arrayCmp.c
+	nasm -f macho64 -o arrayCmp_.o arrayCmp_.asm
+	gcc -c arrayCmp.c
+	cc -o arrayCmp.out arrayCmp.o arrayCmp_.o
+
 .PHONY clean: 
 	- rm *.o *.out
