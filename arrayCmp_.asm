@@ -10,6 +10,7 @@
 
     global  _arrayCmp
     global  _arrayReverse
+    global  _arrayReverse
     global  _min
 
     section .text
@@ -66,5 +67,35 @@ _min:
 .lesser:
     mov     eax, edi
 .end:
+    pop     rbp
+    ret
+
+_arrayReverse:              ; Produce of reverse array
+    push    rbp
+    mov     rbp, rsp
+    push    rbx
+    push    rsi
+    push    rdi
+
+    mov     ecx, esi        ; Set size to ecx
+    mov     rsi, rdi
+    mov     ebx, ecx
+    dec     ebx
+    imul    ebx, 4
+    add     rsi, rbx 
+    sar     ecx, 1
+.loop:
+    mov     ebx, [rdi]
+    mov     eax, [rsi]
+    mov     [rdi], eax 
+    mov     [rsi], ebx
+    add     rdi, 4
+    sub     rsi, 4
+    dec     ecx
+    jnz     .loop
+
+    pop     rdi
+    pop     rsi
+    pop     rbx
     pop     rbp
     ret
