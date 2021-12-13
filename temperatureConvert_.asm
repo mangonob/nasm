@@ -12,12 +12,14 @@ _fToC:
     push    rbp
     mov     rbp, rsp
 
-    movsd   xmm1, qword [rel _k_9]
-    movsd   xmm2, qword [rel _k_5]
-    movsd   xmm3, qword [rel _k_32]
-    subsd   xmm0, xmm3
-    divsd   xmm2, xmm1
-    mulsd   xmm0, xmm2
+    movsd   qword [rbp-8], xmm0
+    fld     qword [rel _kFToC]
+    fld     qword [rbp-8]
+    fild    qword [rel _kOffset]
+    fsubp
+    fmulp
+    fst     qword [rbp-8]
+    movsd   xmm0, qword [rbp-8]
 
     pop     rbp
     ret
@@ -26,20 +28,22 @@ _cToF:
     push    rbp
     mov     rbp, rsp
 
-    movsd   xmm1, qword [rel _k_9]
-    movsd   xmm2, qword [rel _k_5]
-    movsd   xmm3, qword [rel _k_32]
-    divsd   xmm1, xmm2
-    mulsd   xmm0, xmm1
-    addsd   xmm0, xmm3
+    movsd   qword [rbp-8], xmm0
+    fild    qword [rel _kOffset]
+    fld     qword [rel _kCToF]
+    fld     qword [rbp-8]
+    fmulp
+    faddp
+    fst     qword [rbp-8]
+    movsd   xmm0, qword [rbp-8]
 
     pop     rbp
     ret
 
     section .data
-_k_5:
-    dq      5.0
-_k_9:
-    dq      9.0
-_k_32:
-    dq      32.0
+_kFToC:
+    dq      0.5555555555555556
+_kCToF:
+    dq      1.8
+_kOffset:
+    dq      32
