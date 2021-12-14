@@ -72,5 +72,10 @@ temperatureConvert.out: temperatureConvert_.asm temperatureConvert.c
 	gcc -c temperatureConvert.c
 	cc -o temperatureConvert.out temperatureConvert.o temperatureConvert_.o
 
+floatProcess.out: floatProcess_.asm floatProcess.c
+	nasm -f macho64 -o floatProcess_.o floatProcess_.asm
+	gcc -c floatProcess.c
+	cc -o floatProcess.out floatProcess.o floatProcess_.o
+
 .PHONY clean: 
 	- rm *.o *.out
