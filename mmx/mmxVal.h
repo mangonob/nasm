@@ -1,3 +1,5 @@
+#ifndef __MMXVal_H__
+#define __MMXVal_H__
 #include <stdio.h>
 
 typedef union
@@ -22,3 +24,15 @@ typedef enum
     MmxAddModePaddusw,
     MmxAddModePaddd,
 } MmxAddMode;
+
+typedef enum
+{
+    MmxShiftModeLLW,
+    MmxShiftModeRLW,
+    MmxShiftModeRAW,
+    MmxShiftModeLLD,
+    MmxShiftModeRLD,
+    MmxShiftModeRAD,
+} MmxShiftMode;
+
+#endif
