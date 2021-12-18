@@ -1,3 +1,13 @@
+mean.out: mean_.asm mean.c
+	nasm -f macho64 mean_.asm -o mean_.o
+	gcc -c mean.c
+	cc -o mean.out mean.o mean_.o
+
+minMax.out: minMax_.asm minMax.c
+	nasm -f macho64 -o minMax_.o minMax_.asm
+	gcc -c minMax.c
+	cc -o minMax.out minMax.o minMax_.o
+
 mmxMul.out: mmxMul_.asm mmxMul.c desc.o
 	nasm -f macho64 -o mmxMul_.o mmxMul_.asm
 	gcc -c mmxMul.c
