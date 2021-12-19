@@ -1,3 +1,8 @@
+conversion.out: conversion_.asm scalar.h conversion.c
+	nasm -f macho64 -o conversion_.o conversion_.asm
+	gcc -c conversion.c
+	cc -o conversion.out conversion.o conversion_.o
+
 compare.out: compare_.asm compare.c
 	nasm -f macho64 -o compare_.o compare_.asm
 	gcc -c compare.c
