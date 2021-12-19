@@ -56,4 +56,22 @@ void floatRoutine()
 
 void doubleRoutine()
 {
+    while (1)
+    {
+        double a, b;
+        double c[8];
+        printf("a = ? ");
+        scanf("%lf", &a);
+        printf("b = ? ");
+        scanf("%lf", &b);
+        scalarArithmeticDouble(a, b, c);
+        printf("%lf + %lf = %lf\n", a, b, c[0]);
+        printf("%lf - %lf = %lf\n", a, b, c[1]);
+        printf("%lf * %lf = %lf\n", a, b, c[2]);
+        printf("%lf / %lf = %lf\n", a, b, c[3]);
+        printf("min %lf %lf = %lf\n", a, b, c[4]);
+        printf("max %lf %lf = %lf\n", a, b, c[5]);
+        printf("abs %lf = %lf\n", b, c[6]);
+        printf("sqrt %lf = %lf\n", b, c[7]);
+    }
 }
