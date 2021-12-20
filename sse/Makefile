@@ -1,3 +1,8 @@
+calSphere.out: calSphere_.asm calSphere.c
+	nasm -f macho64 -o calSphere_.o calSphere_.asm
+	gcc -c calSphere.c
+	cc -o calSphere.out calSphere.o calSphere_.o
+
 conversion.out: conversion_.asm scalar.h conversion.c
 	nasm -f macho64 -o conversion_.o conversion_.asm
 	gcc -c conversion.c
