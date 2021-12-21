@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "desc.h"
 
 void i8ToString(char *buff, MmxVal a)
