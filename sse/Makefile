@@ -1,7 +1,12 @@
-packedArithmetic.out: packedArithmetic_.asm packedArithmetic.c
+leastSquares.out: leastSquares_.asm leastSquares.c
+	nasm -f macho64 -o leastSquares_.o leastSquares_.asm
+	gcc -c leastSquares.c
+	cc -o leastSquares.out leastSquares.o leastSquares_.o
+
+packedArithmetic.out: packedArithmetic_.asm packedArithmetic.c desc.o
 	nasm -f macho64 -o packedArithmetic_.o packedArithmetic_.asm
 	gcc -c packedArithmetic.c
-	cc -o packedArithmetic.out packedArithmetic.o packedArithmetic_.o
+	cc -o packedArithmetic.out packedArithmetic.o packedArithmetic_.o desc.o
 
 calSphere.out: calSphere_.asm calSphere.c
 	nasm -f macho64 -o calSphere_.o calSphere_.asm

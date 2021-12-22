@@ -12,7 +12,7 @@ _mmxMean:
     mov     rbp, rsp
     push    rdi
 
-    mov     [rbp-8], rsi
+    mov     [rbp-16], rsi
     shr     rsi, 4
     pxor    mm4, mm4        ; mm5:mm4
     pxor    mm5, mm5
@@ -47,9 +47,9 @@ scan_loop:                  ; Scan loop begin
     mov     dword [rdx], eax    ; Save sum
     emms
 
-    mov     [rbp-16], rax
+    mov     [rbp-24], rax
+    fild    qword [rbp-24]
     fild    qword [rbp-16]
-    fild    qword [rbp-8]
     fdivp
     fstp    qword [rcx]
 

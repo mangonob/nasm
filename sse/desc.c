@@ -57,7 +57,7 @@ void u64ToString(char *buff, XmmVal a)
 
 void x8ToString(char *buff, XmmVal a)
 {
-    sprintf(buff, "%02X|%02X|%02X|%02X|%02X|%02X|%02X|%02X",
+    sprintf(buff, "%02X|%02X|%02X|%02X|%02X|%02X|%02X|%02X|%02X|%02X|%02X|%02X|%02X|%02X|%02X|%02X",
             (unsigned char)a.i8[0], (unsigned char)a.i8[1], (unsigned char)a.i8[2], (unsigned char)a.i8[3],
             (unsigned char)a.i8[4], (unsigned char)a.i8[5], (unsigned char)a.i8[6], (unsigned char)a.i8[7],
             (unsigned char)a.i8[8], (unsigned char)a.i8[9], (unsigned char)a.i8[10], (unsigned char)a.i8[11],
