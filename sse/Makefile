@@ -1,3 +1,8 @@
+matrix.out: matrix_.asm matrix.c Mat4x4.o
+	nasm -f macho64 -o matrix_.o matrix_.asm
+	gcc -c matrix.c
+	cc -o matrix.out matrix.o matrix_.o Mat4x4.o
+
 leastSquares.out: leastSquares_.asm leastSquares.c
 	nasm -f macho64 -o leastSquares_.o leastSquares_.asm
 	gcc -c leastSquares.c
@@ -30,6 +35,9 @@ scalarArithmetic.out: scalarArithmetic_.asm scalarArithmetic.c
 
 desc.o: xmmVal.h desc.h desc.c
 	cc -c desc.c
+
+Mat4x4.o: Mat4x4/Mat4x4.h Mat4x4/Mat4x4.c
+	cc -c Mat4x4/Mat4x4.c
 
 .PHONY clean:
 	- rm *.o *.out
