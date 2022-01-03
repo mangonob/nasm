@@ -1,3 +1,8 @@
+packInteger.out: packInteger_.asm packInteger.c desc.o
+	nasm -f macho64 -o packInteger_.o packInteger_.asm
+	gcc -c packInteger.c
+	cc -o packInteger.out packInteger.o packInteger_.o desc.o
+
 matrix.out: matrix_.asm matrix.c Mat4x4.o
 	nasm -f macho64 -o matrix_.o matrix_.asm
 	gcc -c matrix.c

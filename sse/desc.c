@@ -12,14 +12,14 @@ void i8ToString(char *buff, XmmVal a)
 
 void i16ToString(char *buff, XmmVal a)
 {
-    sprintf(buff, "%d|%d|%d|%d", (int)a.i16[0], (int)a.i16[1], (int)a.i16[2], (int)a.i16[3]);
+    sprintf(buff, "%d|%d|%d|%d|%d|%d|%d|%d",
+            (int)a.i16[0], (int)a.i16[1], (int)a.i16[2], (int)a.i16[3],
+            (int)a.i16[4], (int)a.i16[5], (int)a.i16[6], (int)a.i16[7]);
 }
 
 void i32ToString(char *buff, XmmVal a)
 {
-    sprintf(buff, "%d|%d|%d|%d",
-            (int)a.i32[0], (int)a.i32[1],
-            (int)a.i32[2], (int)a.i32[3]);
+    sprintf(buff, "%d|%d|%d|%d", (int)a.i32[0], (int)a.i32[1], (int)a.i32[2], (int)a.i32[3]);
 }
 
 void i64ToString(char *buff, XmmVal a)
