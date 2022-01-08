@@ -1,3 +1,8 @@
+strLength.out: strLength_.asm strLength.c
+	nasm -f macho64 -o strLength_.o strLength_.asm
+	gcc -c strLength.c
+	cc -o strLength.out strLength.o strLength_.o
+
 packInteger.out: packInteger_.asm packInteger.c desc.o
 	nasm -f macho64 -o packInteger_.o packInteger_.asm
 	gcc -c packInteger.c
