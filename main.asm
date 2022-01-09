@@ -1,17 +1,20 @@
 ; ----------------------------------------------------------------
 
     global  _main
-    extern  _puts 
+    extern  _printf
 
     section .text
-_main:      
-    push    rbx                     ; Call stack must be aligned
+_main:
+    push    rbp
+    mov     rbp, rsp
+
     lea     rdi, [rel message]
-    call    _puts
-    pop     rbx                     ; Fix up stack before returning
-    mov     rax, 0                  ; Return value is 0
+    call    _printf
+
+    pop     rbp
+    xor     rax, rax
     ret
 
     section .data
-message:    
-    db      "Hello world", 0
+message:
+    db      "Hello world", 10, 0
