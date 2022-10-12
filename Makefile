@@ -17,6 +17,10 @@ main.out: main.asm source.o
 	nasm -f macho64 -o main.o main.asm
 	cc -o main.out main.o
 
+printSelf.out: printSelf.asm
+	nasm -f macho64 -o printSelf.o printSelf.asm
+	cc -o printSelf.out printSelf.o
+
 integerMulDiv.out: integerMulDiv_.asm integerMulDiv.c
 	nasm -f macho64 -o integerMulDiv_.o integerMulDiv_.asm
 	gcc -c integerMulDiv.c
